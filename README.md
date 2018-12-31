@@ -11,4 +11,8 @@ tsc -W \
 sudo npm i nodemon -g \
 nodemon dist/main.js \
 npm i mongoose@4.13.9 -P -E \
-npm i @types/mongoose@4.7.32 -D -E
+npm i @types/mongoose@4.7.32 -D -E \
+npm i restify-errors@5.0.0 -P -E \
+npm i @types/restify-errors@4.3.2 -D -E \
+npm i bcrypt@3.0.0 -P -E \
+npm i @types/bcrypt@1.0.0 -D -E 
