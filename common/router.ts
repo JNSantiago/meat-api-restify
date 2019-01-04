@@ -9,7 +9,7 @@ export abstract class Router extends EventEmitter {
         return document
     }
 
-    envelopeAll(documents: any[], options): any {
+    envelopeAll(documents: any[], options: any = {}): any {
         return documents
     }
 
@@ -35,7 +35,7 @@ export abstract class Router extends EventEmitter {
                 })
                 response.json(this.envelopeAll(documents, options))
             }else {
-                response.json(this.envelopeAll([], options))
+                response.json(this.envelopeAll([]))
             }
 
             return next()

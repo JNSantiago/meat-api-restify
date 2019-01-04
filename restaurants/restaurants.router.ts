@@ -2,7 +2,6 @@ import * as restify from 'restify'
 import {ModelRouter} from './../common/model-router'
 import {Restaurant} from './restaurants.model'
 import { NotFoundError } from 'restify-errors';
-import { response } from 'spdy';
 
 class RestaurantsRouter extends ModelRouter<Restaurant> {
     constructor() {

@@ -14,7 +14,7 @@ export abstract class ModelRouter<D extends mongoose.Document> extends Router {
     envelope(document: any): any {
         let resource = Object.assign({_links:{}}, document.toJSON())
         resource._links.self = `/${this.basePath}/${resource._id}`
-        return document
+        return resource
     }
 
     envelopeAll(documents: any[], options): any {
