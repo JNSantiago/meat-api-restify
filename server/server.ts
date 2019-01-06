@@ -49,6 +49,6 @@ export class Server {
     }
 
     shutdown() {
-        return mongoose.disconnect().then(() => this.application.close)
+        return mongoose.disconnect().then(() => this.application.close())
     }
 }

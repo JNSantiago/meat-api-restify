@@ -1,21 +1,7 @@
 import 'jest'
 import * as request from 'supertest'
-import {Server} from './../server/server'
-import {environment} from './../common/environment'
-import {usersRouter} from './../users/users.router'
-import {User} from './../users/users.model'
 
-let address: string
-let server: Server
-beforeAll(() => {
-    environment.db.url = process.env.DB_URL || 'mongodb://localhost/meat-api-test-db'
-    environment.server.port = process.env.SERVER_PORT || 3001
-    address = `http://localhost:${environment.server.port}`
-    server = new Server()
-    return server.bootstrap([usersRouter])
-                .then(() => User.remove({}).exec())
-                .catch(console.error)
-})
+let address: string = (<any>global).address
 
 test('get /users', () => {
     return request(address)
@@ -37,10 +23,9 @@ test('post /users', () => {
         })
         .then((response) => {
             expect(response.status).toBe(200)
-            expect(response.body._id).toBeUndefined()
+            expect(response.body._id).toBeDefined()
             expect(response.body.name).toBe('usuario1')
             expect(response.body.email).toBe('usuario1@email.com')
-            expect(response.body.password).toBe('123456')
             expect(response.body.cpf).toBe('824.381.420-57')
             expect(response.body.password).toBeUndefined()
         }).catch(fail)
@@ -75,8 +60,4 @@ test('patch /users/:id', () => {
                     expect(response.body.password).toBeUndefined()
                 })
         }).catch(fail)
-})
-
-afterAll(() => {
-    return server.shutdown()
 })
