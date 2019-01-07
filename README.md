@@ -16,12 +16,14 @@ nodemon dist/main.js
 * ts-jest@22.0.4
 * typescript@2.6.2
 * supertest@3.0.0
+* jsonwebtoken@8.1.1
 * @types/restify-errors@4.3.2
 * @types/restify@5.0.6
 * @types/mongoose@4.7.32
 * @types/bcrypt@1.0.0
 * @types/jest@22.1.2
 * @types/supertest@2.0.4
+* @types/jsonwebtoken@7.2.5
 
 ### Rotas da API
 #### Endpoint de usuários
