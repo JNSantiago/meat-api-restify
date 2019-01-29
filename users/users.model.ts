@@ -64,7 +64,7 @@ userSchema.methods.matches = function(password: string): boolean {
 }
 
 userSchema.methods.hasAny = function(...profiles: string[]) : boolean {
-    return profiles.some(profile => this.profiles.indeOf(profile) !== -1)
+    return profiles.some(profile => this.profiles.indexOf(profile)!== -1)
 }
 
 const hashPassword = (obj, next) => {

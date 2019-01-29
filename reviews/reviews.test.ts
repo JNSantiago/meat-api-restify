@@ -3,9 +3,9 @@ import * as request from 'supertest'
 
 let address: string = (<any>global).address
 
-test('get /users', () => {
+test('get /reviews', () => {
     return request(address)
-        .get('/users')
+        .get('/reviews')
         .then((response) => {
             expect(response.status).toBe(200)
             expect(response.body.items).toBeInstanceOf(Array)
