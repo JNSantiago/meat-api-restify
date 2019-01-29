@@ -8,6 +8,7 @@ import {Router} from './../common/router'
 import {mergePatchBodyParser} from './merge-patch.parser'
 import {handleError} from './error.handler'
 import {tokenParser} from '../security/token.parser'
+import {logger} from './../common/logger'
 
 export class Server {
     application: restify.Server
@@ -26,6 +27,7 @@ export class Server {
                 const options: restify.ServerOptions = {
                     name: 'meat-api',
                     version: '1.0.0',
+                    log: logger
                 }
 
                 if(environment.enableHttps) {
@@ -34,6 +36,10 @@ export class Server {
                 }
 
                 this.application = restify.createServer(options)
+
+                this.application.pre(restify.plugins.requestLogger({
+                    log: logger
+                }))
                 
                 this.application.use(restify.plugins.queryParser())
                 this.application.use(restify.plugins.bodyParser())
@@ -50,6 +56,10 @@ export class Server {
                 })
 
                 this.application.on('restifyError', handleError)
+                this.application.on('after', restify.plugins.auditLogger({
+                    log: logger,
+                    event: 'after'
+                }))
             }catch(error) {
                 reject(error)
             }
