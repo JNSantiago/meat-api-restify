@@ -44,7 +44,8 @@ Formato do Body para cadastrar novos usuários:
   "email": "bruce@dc.com",
   "password": "123456",
   "gender": "Male",
-  "cpf": "19531262357"
+  "cpf": "19531262357",
+  "profiles": ['admin', 'user']
 }
 ```
 
