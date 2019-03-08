@@ -28,4 +28,4 @@ deploy:
     - ssh-add ~/.ssh/id_rsa
     - ssh-keyscan -H $DEPLOY_SERVER >> ~/.ssh/known_hosts
   script:
-    - ssh deploy@$DEPLOY_SERVER "source ~/.nvm/nvm.sh; cd meat-api; git pull; npm i; npm run build; cd; pm2 startOrReload ecosystem.config.js"
+    - ssh deploy@$DEPLOY_SERVER "source ~/.nvm/nvm.sh; cd meat-api-restify; git pull; npm i; npm run build; cd; pm2 startOrReload ecosystem.config.js"
